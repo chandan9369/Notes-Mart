@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotesMart</title>
+    <!-- <link rel="stylesheet" href="app.css" /> -->
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        background-color: whitesmoke;
+        margin: 0;
+        letter-spacing: 2px;
+      }
+      .header {
+        display: flex;
+        height: 10%;
+        background-color: rgba(30, 36, 39, 0.94);
+        flex-direction: row;
+        justify-content: space-between;
+        color: white;
+      }
+
+      .header h2 {
+        margin: auto 20px auto 50px;
+      }
+      .searchSection {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0;
+        justify-content: flex-start;
+      }
+
+      #searchLabel {
+        padding: 8px 4px;
+        margin: auto 0;
+
+        font-weight: 800;
+        font-size: large;
+      }
+      #search {
+        padding: 6px 20px;
+        width: 200px;
+        font-family: cursive;
+        font-weight: 800;
+        background-color: white;
+        outline: none;
+        border: 2px solid black;
+        border-radius: 10px;
+        margin: auto 20px auto 20px;
+      }
+
+      #searchBox {
+        width: 150px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: larger;
+        font-weight: 600;
+        border-radius: 10px;
+        outline: none;
+        color: black;
+        padding: 6px 12px;
+        border: none;
+        background-color: white;
+        margin: auto 30px;
+      }
+      #searchBox:hover {
+        background: linear-gradient(
+          to right,
+          rgb(0, 187, 255),
+          rgb(18, 209, 110)
+        );
+        color: rgba(0, 0, 0, 0.8);
+      }
+      #search-icon {
+        width: 40px;
+        height: 40px;
+        margin: auto 20px;
+      }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+      }
+      .main {
+        border: 1px rgb(213, 212, 212) solid;
+        background-color: white;
+        width: 80%;
+        margin: 20px auto;
+        border-radius: 10px;
+      }
+      .main:hover {
+        box-shadow: 10px 10px 8px #e3e3e3;
+      }
+      .NotePortal {
+        display: flex;
+        padding: 20px;
+        flex-direction: column;
+      }
+      .NotePortal label {
+        padding: 8px 4px;
+        margin: auto 0;
+        font-weight: 800;
+        font-size: large;
+      }
+      .NotePortal textarea {
+        max-width: 98%;
+        width: 95%;
+        height: 100px;
+        font-family: cursive;
+        letter-spacing: 1.3px;
+        font-weight: 600;
+        outline: none;
+        border: 1px solid silver;
+        border-radius: 5px;
+      }
+      .NotePortal button {
+        width: 150px;
+        font-family: cursive;
+        font-size: large;
+        font-weight: 500;
+        border-radius: 10px;
+        outline: none;
+        border: 2px solid rgb(36, 35, 35);
+        color: black;
+        padding: 4px 8px;
+        background-color: white;
+        margin: 30px 0px 20px 0;
+      }
+      .NotePortal button:hover {
+        background-color: black;
+        color: white;
+      }
+      .allNotes {
+        background-color: white;
+        width: 100%;
+        border: 1px rgb(213, 212, 212) solid;
+        border-radius: 10px;
+        min-height: 400px;
+      }
+      .allNotes:hover {
+        box-shadow: 10px 10px 8px #e3e3e3;
+      }
+      .content {
+        font-size: large;
+        font-weight: 600;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 20px 20px;
+      }
+      h1 {
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+        border-top: 1px solid rgba(0, 0, 0, 0.5);
+      }
+
+      .cart {
+        width: 250px;
+        font-weight: 500;
+        margin: 10px 20px;
+        font-family: monospace;
+        background-color: whitesmoke;
+        border: 2px solid #e3e3e3;
+        border-radius: 10px;
+      }
+      .cart h3 {
+        margin: 10px;
+        padding: 20px 0px 10px 10px;
+      }
+      .cartNote {
+        width: 80%;
+        margin: 10px;
+        overflow: auto;
+        padding: 0px 10px 0px;
+      }
+      .cart button {
+        width: 100px;
+        font-family: cursive;
+        font-size: medium;
+        font-weight: 500;
+        border-radius: 10px;
+        outline: none;
+        border: 2px solid rgb(36, 35, 35);
+        color: black;
+        padding: 4px 8px;
+        background-color: white;
+        margin: 20px 0px 10px 20px;
+      }
+      .cart button:hover {
+        background-color: black;
+        color: white;
+      }
+
+      .clear {
+        /* width:100px; */
+        font-family: cursive;
+        font-size: medium;
+        font-weight: 500;
+        border-radius: 10px;
+        outline: none;
+        border: 2px solid rgb(36, 35, 35);
+        color: black;
+        padding: 6px 10px;
+        background-color: white;
+        margin: 20px 0px 10px 20px;
+      }
+      .clear:hover {
+        background-color: black;
+        color: white;
+      }
+      .clearSec {
+        text-align: center;
+      }
+      @media (max-width: 950px) {
+        .header {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+        .header h2 {
+          margin: 20px 0 5px;
+        }
+        .searchSection {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        #searchLabel,
+        #search,
+        #searchBox {
+          margin: 0 0 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>Notes Mart</h2>
+      <!-- <img src="search.png" alt="search-icon" id="search-icon" /> -->
+      <div class="searchSection">
+        <label for="search" id="searchLabel">Enter to search</label>
+        <input id="search" type="text" />
+        <button id="searchBox">Search</button>
+      </div>
+    </div>
+    <!-- <hr /> -->
+    <section class="container">
+      <h1>Welcome To Notes Mart</h1>
+      <div class="main">
+        <div class="NotePortal">
+          <label for="notes">Add Your Notes</label>
+          <textarea id="notes"></textarea>
+          <button id="addNotes">Add Note</button>
+        </div>
+      </div>
+      <h1>Your Notes</h1>
+      <div class="allNotes">
+        <div class="content"></div>
+      </div>
+      <div class="clearSec">
+        <button class="clear">Clear Search Result</button>
+      </div>
+    </section>
+    <!-- <script src="app.js"></script> -->
+    <script>
+      const text = document.querySelector("#notes");
+      const addNote = document.querySelector("#addNotes");
+      const content = document.querySelector(".content");
+      const searchBox = document.querySelector("#search");
+      const searchBtn = document.querySelector("#searchBox");
+      const clearBtn = document.querySelector(".clear");
+
+      const note = "";
+      const allNotes = [];
+
+      addNote.addEventListener("click", function (e) {
+        if (text.value == "") {
+          alert("please,write your note first then add");
+        } else {
+          allNotes.push(text.value);
+          showNote(allNotes);
+          text.value = "";
+        }
+      });
+
+      function showNote(arr) {
+        html = "";
+        removeAllChildNodes(content);
+        arr.forEach(function (ele, index) {
+          html = `<div class="cart">
+          <h3>Note ${index + 1}</h3>
+          <div class="cartNote">
+            <p>${arr[index]}</p>
+          </div>
+          <button id="${index}" onclick="deleteNote(this.id)">Delete</button>
+        </div>`;
+          const newEle = document.createElement("div");
+          newEle.innerHTML = html;
+          content.append(newEle);
+        });
+      }
+
+      function deleteNote(index) {
+        let arr = [];
+        for (let i = 0; i < allNotes.length; i++) {
+          if (i != index) {
+            arr.push(allNotes[i]);
+          }
+        }
+
+        for (let i = 0; i <= arr.length; i++) {
+          allNotes[i] = arr[i];
+        }
+        allNotes.pop();
+        console.log("hello", index);
+        showNote(allNotes);
+      }
+
+      function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+          parent.removeChild(parent.firstChild);
+        }
+      }
+
+      // Search functionality
+      searchBtn.addEventListener("click", function () {
+        let key = searchBox.value;
+        let res = [];
+        for (let i = 0; i < allNotes.length; i++) {
+          if (allNotes[i].indexOf(key) != -1) {
+            res.push(allNotes[i]);
+          }
+        }
+        if (res.length != 0) {
+          showNote(res);
+        } else {
+          alert("No result found");
+        }
+      });
+
+      // clear search result
+      clearBtn.addEventListener("click", function () {
+        searchBox.value = "";
+        showNote(allNotes);
+      });
+    </script>
+  </body>
+</html>
